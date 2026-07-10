@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saandil Altaf — IT Support &amp; Systems Administrator</title>
+<meta name="description" content="Portfolio of Saandil Altaf, IT Support Technician and Systems Administrator specializing in cloud, networking and endpoint support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-void:#0F131A;
+    --bg-panel:#171D26;
+    --bg-panel-raised:#1D2531;
+    --border-line:#2A3341;
+    --border-line-soft:#212936;
+    --text-primary:#E9ECF1;
+    --text-secondary:#8A93A6;
+    --text-dim:#5C6577;
+    --signal:#4FE0B0;
+    --signal-dim:#2E7E63;
+    --alert:#F2A65A;
+    --radius:3px;
+    --mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --sans:'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg-void);
+    color:var(--text-primary);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(var(--border-line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-line-soft) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:0.35;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(15,19,26,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border-line);
+  }
+  .nav-inner{
+    max-width:920px;
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .nav-id{
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .nav-links{
+    display:flex;
+    gap:24px;
+    list-style:none;
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--text-secondary);
+    transition:color 0.15s ease;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{
+    color:var(--signal);
+    border-bottom-color:var(--signal);
+  }
+  .status-pill{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--signal);
+    border:1px solid var(--signal-dim);
+    padding:5px 10px;
+    border-radius:20px;
+  }
+  .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--signal);
+    box-shadow:0 0 0 0 rgba(79,224,176,0.6);
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(79,224,176,0.45);}
+    70%{box-shadow:0 0 0 8px rgba(79,224,176,0);}
+    100%{box-shadow:0 0 0 0 rgba(79,224,176,0);}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--border-line);
+  }
+  .terminal{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-dim);
+    margin-bottom:22px;
+  }
+  .terminal .prompt{color:var(--signal);}
+  .cursor{
+    display:inline-block;
+    width:7px;height:15px;
+    background:var(--signal);
+    margin-left:4px;
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  h1{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:clamp(32px,5vw,48px);
+    letter-spacing:-0.01em;
+    margin-bottom:10px;
+  }
+  .role-line{
+    font-size:18px;
+    color:var(--signal);
+    font-weight:500;
+    margin-bottom:22px;
+  }
+  .summary{
+    max-width:600px;
+    color:var(--text-secondary);
+    font-size:16px;
+    margin-bottom:36px;
+  }
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--border-line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .stat{
+    padding:18px 20px;
+    border-right:1px solid var(--border-line);
+    background:var(--bg-panel);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-num{
+    font-family:var(--mono);
+    font-size:24px;
+    font-weight:700;
+    color:var(--text-primary);
+  }
+  .stat-label{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-dim);
+    margin-top:4px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--border-line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:32px;
+  }
+  .section-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--signal);
+    letter-spacing:0.06em;
+  }
+  h2{
+    font-family:var(--mono);
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  /* skills */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .skill-group-title{
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-dim);
+    margin-bottom:12px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--border-line);
+  }
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-secondary);
+    background:var(--bg-panel);
+    border:1px solid var(--border-line);
+    padding:6px 10px;
+    border-radius:var(--radius);
+  }
+
+  /* certifications */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  .cert-card{
+    background:var(--bg-panel);
+    border:1px solid var(--border-line);
+    border-left:2px solid var(--signal);
+    padding:16px 18px;
+    border-radius:var(--radius);
+  }
+  .cert-name{
+    font-weight:600;
+    font-size:14.5px;
+    margin-bottom:4px;
+  }
+  .cert-issuer{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+
+  /* experience: ticket log */
+  .ticket{
+    background:var(--bg-panel);
+    border:1px solid var(--border-line);
+    border-radius:var(--radius);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .ticket-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 20px;
+    background:var(--bg-panel-raised);
+    border-bottom:1px solid var(--border-line);
+    flex-wrap:wrap;
+  }
+  .ticket-id{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    letter-spacing:0.05em;
+  }
+  .ticket-status{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:3px 9px;
+    border-radius:12px;
+    border:1px solid;
+  }
+  .ticket-status.open{
+    color:var(--signal);
+    border-color:var(--signal-dim);
+  }
+  .ticket-status.closed{
+    color:var(--text-dim);
+    border-color:var(--border-line);
+  }
+  .ticket-body{padding:20px;}
+  .ticket-role{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:2px;
+  }
+  .ticket-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-dim);
+    margin-bottom:16px;
+  }
+  .ticket-meta .co{color:var(--text-secondary);}
+  .resolution-label{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-dim);
+    margin-bottom:8px;
+  }
+  .ticket-body ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .ticket-body li{
+    padding-left:18px;
+    position:relative;
+    font-size:14.5px;
+    color:var(--text-secondary);
+  }
+  .ticket-body li::before{
+    content:"›";
+    position:absolute;
+    left:0;
+    color:var(--signal);
+    font-family:var(--mono);
+  }
+
+  /* education */
+  .edu-card{
+    background:var(--bg-panel);
+    border:1px solid var(--border-line);
+    border-radius:var(--radius);
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .edu-degree{font-weight:600;font-size:15.5px;margin-bottom:4px;}
+  .edu-school{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--text-dim);
+  }
+
+  /* contact / footer */
+  .contact{
+    text-align:left;
+  }
+  .contact-row{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .contact-item{
+    font-family:var(--mono);
+    font-size:14px;
+  }
+  .contact-item a{
+    text-decoration:none;
+    border-bottom:1px solid var(--border-line);
+    padding-bottom:2px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-item a:hover, .contact-item a:focus-visible{
+    color:var(--signal);
+    border-color:var(--signal);
+  }
+  footer{
+    padding:32px 0 48px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--text-dim);
+  }
+
+  @media (max-width:640px){
+    .skill-groups{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--border-line);}
+    .stat:last-child{border-bottom:none;}
+    .nav-links{gap:16px;}
+    .hero{padding:64px 0 48px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .dot, .cursor{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-id">S. ALTAF</span>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="status-pill"><span class="dot"></span>Available for hire</span>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" id="top">
+    <div class="terminal"><span class="prompt">$</span> whoami<span class="cursor"></span></div>
+    <h1>Saandil Altaf</h1>
+    <div class="role-line">IT Support Technician &amp; Systems Administrator</div>
+    <p class="summary">Experienced IT professional with over 5 years in the industry, specialising in cloud computing, networking, and support across all major operating systems. Proven track record delivering reliable technical solutions in dynamic, multi-site environments.</p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years in IT support</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Employers / contracts</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="section-tag">01</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skill-groups">
+
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud &amp; Identity</div>
+        <div class="chip-row">
+          <span class="chip">Microsoft 365 &amp; Azure Administration</span>
+          <span class="chip">Active Directory / Microsoft Entra</span>
+          <span class="chip">Azure AD &amp; Hybrid Environments</span>
+          <span class="chip">Intune, Teams, SharePoint, Exchange, OneDrive</span>
+          <span class="chip">Basic PowerShell scripting</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Networking &amp; Infrastructure</div>
+        <div class="chip-row">
+          <span class="chip">TCP/IP, DNS, DHCP</span>
+          <span class="chip">VPNs &amp; Firewall Basics</span>
+          <span class="chip">PRTG Network Monitoring</span>
+          <span class="chip">Aruba APs / Avaya &amp; HP Switches</span>
+          <span class="chip">Windows Server 2019/2022, Group Policy</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Endpoint, Security &amp; Support</div>
+        <div class="chip-row">
+          <span class="chip">Windows 10/11, macOS, basic Linux</span>
+          <span class="chip">MS Defender &amp; Sophos AV</span>
+          <span class="chip">MFA, Mimecast, Phishing Prevention</span>
+          <span class="chip">Intune / Datto / Jamf Asset Management</span>
+          <span class="chip">RDP, TeamViewer, Datto Remote Support</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Service Management</div>
+        <div class="chip-row">
+          <span class="chip">ITIL Framework &amp; SLA Targets</span>
+          <span class="chip">Jira Service Desk</span>
+          <span class="chip">ServiceNow</span>
+          <span class="chip">Mailbox &amp; Distribution List Admin</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="section-head">
+      <span class="section-tag">02</span>
+      <h2>Certifications</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Certified: Security, Compliance &amp; Identity Fundamentals</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Enable Hybrid Work with Microsoft Teams</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Introduction to Artificial Intelligence</div>
+        <div class="cert-issuer">Bimm University</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Azure Administrator</div>
+        <div class="cert-issuer">Udemy</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">CCNA Training Course</div>
+        <div class="cert-issuer">Corvit Systems</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">ITIL 4 Fundamentals — Essentials of IT Service Management</div>
+        <div class="cert-issuer">ITIL</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <span class="section-tag">03</span>
+      <h2>Experience</h2>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="ticket-id">TCK-2025-05</span>
+        <span class="ticket-status open">In progress</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-role">IT Support Technician</div>
+        <div class="ticket-meta"><span class="co">Arden University</span> — 09/2025 – Present</div>
+        <div class="resolution-label">Resolution log</div>
+        <ul>
+          <li>Provided 1st/2nd line IT support to students and staff onsite and remotely, resolving account issues, device faults, and access problems via Teams, Zoom, and remote tools.</li>
+          <li>Used SCCM as the primary management tool to deploy software, push updates, support device imaging, and maintain compliance across the staff and student device estate.</li>
+          <li>Supported UK and European IT teams with hardware rollouts, device provisioning, and application deployments.</li>
+          <li>Kept classrooms, labs, and teaching spaces fully operational by troubleshooting hardware, AV systems, and printer issues.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="ticket-id">TCK-2023-04</span>
+        <span class="ticket-status closed">Resolved</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-role">IT Support</div>
+        <div class="ticket-meta"><span class="co">Bimm / MetFilm / UWL University, London</span> — 06/2023 – 09/2025</div>
+        <div class="resolution-label">Resolution log</div>
+        <ul>
+          <li>Provided technical support across Windows 10/11, Windows Server (2016–2022), macOS, and basic Linux systems.</li>
+          <li>Managed user accounts and permissions via Active Directory, Group Policy, and Microsoft 365, including mailbox and distribution list administration.</li>
+          <li>Enforced security protocols including MFA, email filtering, and endpoint protection with Defender, Mimecast, and Sophos.</li>
+          <li>Handled Azure AD tasks in hybrid environments and supported Exchange Online, Teams, SharePoint, and OneDrive.</li>
+          <li>Troubleshot network issues (TCP/IP, DNS, DHCP, VPN), monitored with PRTG, and resolved LAN/WAN connectivity problems.</li>
+          <li>Delivered remote support using RDP, TeamViewer, and Datto; maintained desktops, laptops, printers, and mobile devices.</li>
+          <li>Managed assets through Intune, used PowerShell for task automation, and worked within ITIL frameworks using Jira and ServiceNow.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="ticket-id">TCK-2020-12</span>
+        <span class="ticket-status closed">Resolved</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-role">IT Support Contractor</div>
+        <div class="ticket-meta"><span class="co">FassTech, UK</span> — 12/2020 – 04/2023</div>
+        <div class="resolution-label">Resolution log</div>
+        <ul>
+          <li>Worked as an independent IT contractor providing hourly support to a range of clients across various environments.</li>
+          <li>Installed, configured, and maintained both network and local printers.</li>
+          <li>Performed hardware installations including desktops, laptops, peripherals, and internal components (RAM, SSDs).</li>
+          <li>Set up network devices including routers, switches, and access points to ensure optimal connectivity and performance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket-head">
+        <span class="ticket-id">TCK-2014-10</span>
+        <span class="ticket-status closed">Resolved</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-role">First Line Support</div>
+        <div class="ticket-meta"><span class="co">TechieNet, UK</span> — 10/2014 – 04/2020</div>
+        <div class="resolution-label">Resolution log</div>
+        <ul>
+          <li>Provided Tier 1 IT support to internal users, delivering desk-side assistance and remote troubleshooting across multiple systems and applications.</li>
+          <li>Created and managed help desk tickets, resolved hardware and software issues, and conducted user training to reduce recurring problems.</li>
+          <li>Supported users across various time zones, proactively diagnosing hardware and network issues.</li>
+          <li>Prepared and deployed new computers and mobile devices in line with company standards, and escalated complex technical queries.</li>
+          <li>Maintained detailed documentation of support interactions to enhance the internal knowledge base.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <span class="section-tag">04</span>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">BSc Computer Science — Applied Computing</div>
+        <div class="edu-school">Wrexham University, Wales</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <span class="section-tag">05</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact">
+      <p class="summary" style="margin-bottom:0;">Open to IT support, systems administration, and cloud infrastructure roles.</p>
+      <div class="contact-row">
+        <span class="contact-item"><a href="mailto:sandal.altaf@gmail.com">sandal.altaf@gmail.com</a></span>
+        <span class="contact-item"><a href="tel:+447508864886">+44 7508 864886</a></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Saandil Altaf. Built for static hosting.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

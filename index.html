@@ -463,6 +463,51 @@
     color:var(--text-dim);
   }
 
+  /* blog / linkedin embed */
+  .blog-post-card{
+    background:var(--bg-panel);
+    border:1px solid var(--border-line);
+    border-radius:var(--radius);
+    padding:20px;
+    margin-bottom:20px;
+    transition:transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .blog-post-card:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-md);
+    border-color:var(--signal-dim);
+  }
+  .blog-post-meta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--text-dim);
+  }
+  .blog-post-meta .dot-static{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--signal);
+  }
+  .li-embed-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    background:var(--bg-panel-raised);
+    border:1px solid var(--border-line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .li-embed-wrap iframe{
+    width:100%;
+    max-width:504px;
+    border:none;
+    display:block;
+  }
+
   /* placeholder sections (blog / projects) */
   .placeholder-card{
     background:var(--bg-panel);
@@ -872,6 +917,17 @@
       <span class="section-tag">06</span>
       <h2>Blog</h2>
     </div>
+
+    <div class="blog-post-card">
+      <div class="blog-post-meta">
+        <span class="dot-static"></span>
+        <span>LinkedIn — Latest Post</span>
+      </div>
+      <div class="li-embed-wrap">
+        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7316891337008582656" height="1796" width="504" frameborder="0" allowfullscreen title="Embedded post"></iframe>
+      </div>
+    </div>
+
     <div class="placeholder-card">
       <span class="ticket-status closed">In development</span>
       <p>Posts on IT support, cloud administration, and career notes are coming soon.</p>
